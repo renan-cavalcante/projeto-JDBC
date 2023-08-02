@@ -41,6 +41,13 @@ public class Program {
 		seller.setName("Bruce Waine");
 		sellerDao.update(seller);
 		System.out.println("Update completo!");
+		
+		System.out.println();
+		System.out.println("Seller delete");
+		sellerDao.delecteById(3);
+		System.out.println("Seller 3 deletado!");
+		
+		
 
 		
 	}

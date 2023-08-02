@@ -96,7 +96,24 @@ public class SellerDaoJDBC implements GenericDao<Seller> {
 
 	@Override
 	public void delecteById(Integer id) {
-		// TODO Auto-generated method stub
+PreparedStatement st = null;
+		
+		try {
+			st = conn.prepareStatement("DELETE FROM seller WHERE ID = ?");
+			st.setInt(1, id);
+			int rows =  st.executeUpdate();
+			
+			if(rows == 0) {
+				throw new DbException("Seller não existe no banco de dados");
+			}
+		
+		}
+		catch(SQLException erro) {
+			throw new DbException(erro.getMessage());
+		}
+		finally {
+			DB.closeStatement(st);
+		}
 		
 	}
 
