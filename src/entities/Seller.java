@@ -2,6 +2,8 @@ package entities;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.Objects;
 
 
@@ -58,6 +60,11 @@ public class Seller implements Serializable {
 
 	public LocalDate getBirthDate() {
 		return birthDate;
+	}
+	
+	public Date getBirthDateDate() {
+		return java.util.Date.from(this.getBirthDate().atStartOfDay(ZoneId.systemDefault()).toInstant());
+		
 	}
 
 	public void setBirthDate(LocalDate birthDate) {
